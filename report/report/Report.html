@@ -216,7 +216,7 @@
                                     </div>
                                     <div>
                                         <div class="small text-gray-500">4月2日, 2022</div>
-                                        有XXXXX件檢舉待處理
+                                        有XXXXX件客服待處理
                                     </div>
                                 </a>
                                 <a class="dropdown-item text-center small text-gray-500" href="#">顯示全部</a>
@@ -334,55 +334,38 @@
 
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h4 class="m-0 font-weight-bold text-primary">檢舉列表</h4>
+                            <h4 class="m-0 font-weight-bold text-primary">客服列表</h4>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                                        <?php<!--資料庫及PHP的部分待處理 --> 
+                                                        <!--<?php資料庫及PHP的部分待處理  
                     $link=mysqli_connect("localhost","root","12345678","car");
            $sql="select * from newcustomer";
-                     $rs=mysqli_query($link,$sql);?>   
+                     $rs=mysqli_query($link,$sql);?>-->   
             
                                     <thead>
                                         <tr>
-                                            <th>姓名</th>
-                                            <th>電話</th>
-                                            <th>信箱</th>
-                                            <th>租借車型</th>
-                                            <th>租借日期</th>
-                                            <th>天數</th>
-                                            <th>總額</th>
+                                            <th>用戶名</th>
+                                            <th>事由類別</th>
+                                            <th>ID</th>
+                                            <th>日期</th>
+                                            <th>結案與否</th>
+                                            <th>敘述</th>
+                                            <th>連結</th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                           <th>姓名</th>
-                                            <th>電話</th>
-                                            <th>信箱</th>
-                                            <th>租借車型</th>
-                                            <th>租借日期</th>
-                                            <th>天數</th>
-                                            <th>總額</th>
-                                        </tr>
-                                    </tfoot>
                                     <tbody>
-                                     <?php   
-                                        while($record=mysqli_fetch_row($rs)){   
-                                        echo "
                                         
                                         <tr>
-                                        <td>$record[0]</td>
-                                        <td>$record[1]</td>
-                                        <td>$record[2]</td>
-                                        <td>$record[3]</td>
-                                        <td>$record[4]</td>
-                                        <td>$record[6]天</td>
-                                        <td>$record[5]</td>
-                                        </tr>";
-                                        }
-                                         mysqli_close($link);
-                                        ?>
+                                        <td>王小明</td>
+                                        <td>Bug</td>
+                                        <td>00000</td>
+                                        <td>2022-05-04</td>
+                                        <td>否</td>
+                                        <td>點選按鈕不會動</td>
+                                        <td><a href="#">處理連結</a></td>
+                                        </tr>
                                         
                                     </tbody>
                                 </table>
