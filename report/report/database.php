@@ -1,15 +1,15 @@
 <?php
-define("server", "localhost");
+define("hostName", "localhost");
 define("user", "root");
-define("password", "");
-define("database", "demo");
+define("password", "12345678");
+define("databasename", "Reports");
 //mysql_connect(); parameters
-$connect = mysqli_connect(server, user, password, database);
+$conn = mysqli_connect(hostName, user, password, databasename);
 //run a simple condition to check your connection
-if (!$connect)
+if (!$conn)
 {
     die("You DB connection has been failed!: " . mysqli_connect_error());
 }
-$connection = "You have successfully connected to the mysql database";
+$conn = "You have successfully connected to the mysql database";
 //echo $connection;
 ?>

@@ -339,12 +339,7 @@
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <?php 
-                                        $link=mysqli_connect("localhost","root","12345678","car");
-                                        $sql="select * from newcustomer";
-                                        $rs=mysqli_query($link,$sql);  
-            
-                                    <thead>
+                                <thead>
                                         <tr>
                                             <th>用戶名</th>
                                             <th>事由類別</th>
@@ -355,6 +350,14 @@
                                             <th>連結</th>
                                         </tr>
                                     </thead>
+                                    <?php 
+                                        $link=mysqli_connect("localhost","root","12345678","Reports");
+                                        $sql="select * from ";
+                                        $rs=mysqli_query($link,$sql);
+                                        
+                                        
+            
+
                                     <tbody>
                                         
                                         <tr>
