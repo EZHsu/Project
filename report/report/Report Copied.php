@@ -1,3 +1,6 @@
+<?php
+include("developers.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -341,6 +344,7 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                         <tr>
+                                            <th>No.</th>
                                             <th>用戶名</th>
                                             <th>事由類別</th>
                                             <th>ID</th>
@@ -350,10 +354,11 @@
                                             <th>連結</th>
                                         </tr>
                                     </thead>
-                                    <?php 
-                                        $link=mysqli_connect("localhost","root","12345678","Reports");
-                                        $sql="select * from ";
-                                        $rs=mysqli_query($link,$sql);
+                                    <?php
+                                    if(is_array($fetchData)){      
+                                        $sn=1;
+                                        foreach($fetchData as $data){
+                                        ?>
                                         
                                         
             
@@ -361,16 +366,22 @@
                                     <tbody>
                                         
                                         <tr>
-                                        <td>王小明</td>
-                                        <td>Bug</td>
-                                        <td>00000</td>
-                                        <td>2022-05-04</td>
-                                        <td>否</td>
-                                        <td>點選按鈕不會動</td>
+                                        <td><?php echo $sn; ?></td>
+                                        <td><?php echo $data['Name']??''; ?></td>
+                                        <td><?php echo $data['Catagory']??''; ?></td>
+                                        <td><?php echo $data['ID']??''; ?></td>
+                                        <td><?php echo $data['Date']??''; ?></td>
+                                        <td><?php echo $data['Status']??''; ?></td>
+                                        <td><?php echo $data['Detail']??''; ?></td>
                                         <td><a href="#">處理連結</a></td>
                                         </tr>
-                                        
-                                    </tbody> ?>
+                                        <?php
+                                        $sn++;}}else{ ?>
+                                            <tr>
+                                             <td colspan="7">No data found</td>
+                                            </tr>
+                                         <?php } ?>
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
