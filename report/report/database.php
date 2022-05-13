@@ -2,7 +2,7 @@
 define("hostName", "localhost");
 define("user", "root");
 define("password", "12345678");
-define("databasename", "Reports");
+define("databasename", "Report");
 //mysql_connect(); parameters
 $conn = mysqli_connect(hostName, user, password, databasename);
 //run a simple condition to check your connection
