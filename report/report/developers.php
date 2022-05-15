@@ -1,9 +1,8 @@
 <?php
 include("database.php");
-
 $db= $conn;
 $tableName="Reports";
-$columns= ['Name', 'Catagory','ID','Date','Status', 'Detail'];
+$columns= ['Name', 'Category','ID','Date','Status', 'Detail'];
 $fetchData = fetch_data($db, $tableName, $columns);
 
 function fetch_data($db, $tableName, $columns){

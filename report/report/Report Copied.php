@@ -354,6 +354,7 @@ include("developers.php");
                                             <th>連結</th>
                                         </tr>
                                     </thead>
+                                    <!--用陣列形式讀取Database-->
                                     <?php
                                     if(is_array($fetchData)){      
                                         $sn=1;
@@ -368,7 +369,7 @@ include("developers.php");
                                         <tr>
                                         <td><?php echo $sn; ?></td>
                                         <td><?php echo $data['Name']??''; ?></td>
-                                        <td><?php echo $data['Catagory']??''; ?></td>
+                                        <td><?php echo $data['Category']??''; ?></td>
                                         <td><?php echo $data['ID']??''; ?></td>
                                         <td><?php echo $data['Date']??''; ?></td>
                                         <td><?php echo $data['Status']??''; ?></td>
@@ -378,7 +379,7 @@ include("developers.php");
                                         <?php
                                         $sn++;}}else{ ?>
                                             <tr>
-                                             <td colspan="7">No data found</td>
+                                             <td colspan="8">No data found</td>
                                             </tr>
                                          <?php } ?>
                                     </tbody>

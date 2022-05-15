@@ -5,13 +5,14 @@ SET time_zone = "+00:00";
 
 CREATE Database Report;
 
+Use Report;
 CREATE TABLE `Reports` (
   `Name` varchar(500) NOT NULL,
   `Category` varchar(500) DEFAULT NULL,
   `ID` varchar(500) NOT NULL,
-  `Date` datetime NOT NULL
+  `Date` datetime NOT NULL,
   `Status` varchar(500) NOT NULL,
-  `Detail` varchar(500) NOT NULL,
+  `Detail` varchar(500) NOT NULL
   
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
