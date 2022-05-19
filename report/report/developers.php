@@ -12,7 +12,8 @@ function fetch_data($db, $tableName, $columns){
   $msg="columns Name must be defined in an indexed array";
  }elseif(empty($tableName)){
    $msg= "Table Name is empty";
-}else{
+}
+else{
 
 $columnName = implode(", ", $columns);
 $query = "SELECT ".$columnName." FROM $tableName"." ORDER BY id DESC";
