@@ -344,12 +344,12 @@ include("developers.php");
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                         <tr>
-                                            <th>用戶名</th>
-                                            <th>事由類別</th>
                                             <th>ID</th>
-                                            <th>日期</th>
+                                            <th>姓名</th>
+                                            <th>Email</th>
+                                            <th>標題</th>
+                                            <th>內容</th>
                                             <th>結案與否</th>
-                                            <th>敘述</th>
                                             <th>連結</th>
                                         </tr>
                                     </thead>
@@ -371,7 +371,7 @@ include("developers.php");
                                         <td><?php echo $data['email']??''; ?></td>
                                         <td><?php echo $data['title']??''; ?></td>
                                         <td><?php echo $data['content']??''; ?></td>
-                                        <td><?php echo $data['end']??''; ?></td>
+                                        <td><?php if($data['end'] == 1) echo '結案'; else echo '未結案'; ?></td>
                                         <td><a href="#">處理連結</a></td>
                                         </tr>
                                         <?php
