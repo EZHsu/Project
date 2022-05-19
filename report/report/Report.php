@@ -372,7 +372,7 @@ include("developers.php");
                                         <td><?php echo $data['title']??''; ?></td>
                                         <td><?php echo $data['content']??''; ?></td>
                                         <td><?php if($data['end'] == 1) echo '結案'; else echo '未結案'; ?></td>
-                                        <td><a href="#">處理連結</a></td>
+                                        <td><a onclick="update($data['name'])">處理連結</a></td>
                                         </tr>
                                         <?php
                                         $sn++;}}else{ ?>
@@ -449,6 +449,29 @@ include("developers.php");
 
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
+    <script>
+    function update($id, $lang){
+        //get the input value
+        $.ajax({
+            //the url to send the data to
+            url: "Update.php",
+            //the data to send to
+            data: {name: $name},
+            //type. for eg: GET, POST
+            type: "POST",
+            //on success
+            success: function(data){
+                console.log("***********Success***************"); //You can remove here
+                console.log(data); //You can remove here
+            },
+            //on error
+            error: function(){
+                    console.log("***********Error***************"); //You can remove here
+                    console.log(data); //You can remove here
+            }
+        });
+    }
+</script>
 
 </body>
 
