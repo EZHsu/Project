@@ -1,8 +1,8 @@
 <?php
 include("database.php");
 $db= $conn;
-$tableName="Reports";
-$columns= ['Name', 'Category','ID','Date','Status', 'Detail'];
+$tableName="costomer_service";
+$columns= ['id', 'name','email','title','content', 'end'];
 $fetchData = fetch_data($db, $tableName, $columns);
 
 function fetch_data($db, $tableName, $columns){

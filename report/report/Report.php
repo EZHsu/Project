@@ -366,12 +366,12 @@ include("developers.php");
                                     <tbody>
                                         
                                         <tr>
-                                        <td><?php echo $data['Name']??''; ?></td>
-                                        <td><?php echo $data['Category']??''; ?></td>
-                                        <td><?php echo $data['ID']??''; ?></td>
-                                        <td><?php echo $data['Date']??''; ?></td>
-                                        <td><?php echo $data['Status']??''; ?></td>
-                                        <td><?php echo $data['Detail']??''; ?></td>
+                                        <td><?php echo $data['id']??''; ?></td>
+                                        <td><?php echo $data['name']??''; ?></td>
+                                        <td><?php echo $data['email']??''; ?></td>
+                                        <td><?php echo $data['title']??''; ?></td>
+                                        <td><?php echo $data['content']??''; ?></td>
+                                        <td><?php echo $data['end']??''; ?></td>
                                         <td><a href="#">處理連結</a></td>
                                         </tr>
                                         <?php
