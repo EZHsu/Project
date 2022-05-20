@@ -1,5 +1,6 @@
 <?php
 include("developers.php");
+include("Update.php")
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -356,7 +357,6 @@ include("developers.php");
                                     <!--用陣列形式讀取Database-->
                                     <?php
                                     if(is_array($fetchData)){      
-                                        $sn=1;
                                         foreach($fetchData as $data){
                                         ?>
                                         
@@ -371,11 +371,11 @@ include("developers.php");
                                         <td><?php echo $data['email']??''; ?></td>
                                         <td><?php echo $data['title']??''; ?></td>
                                         <td><?php echo $data['content']??''; ?></td>
-                                        <td><?php if($data['end'] == 1) echo '結案'; else echo '未結案'; ?></td>
-                                        <td><a onclick="update($data['name'])">處理連結</a></td>
+                                        <td><?php if($data['end'] == 1) echo '結案'; else if($data['end'] == 0) echo '未結案'; else echo "error"; ?></td>
+                                        <td><button onclick="update('<?php echo $data['name']; ?>')">處理連結</button></td>
                                         </tr>
                                         <?php
-                                        $sn++;}}else{ ?>
+                                        ;}}else{ ?>
                                             <tr>
                                              <td colspan="8">No data found</td>
                                             </tr>
@@ -449,10 +449,10 @@ include("developers.php");
 
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
-    <script>
-    function update($id, $lang){
+    <script  type="text/javascript">
+    function update($name){
         //get the input value
-        $.ajax({
+        jQuery.ajax({
             //the url to send the data to
             url: "Update.php",
             //the data to send to
