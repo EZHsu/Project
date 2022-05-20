@@ -352,6 +352,7 @@ include("Update.php")
                                             <th>內容</th>
                                             <th>結案與否</th>
                                             <th>連結</th>
+                                            <th>寄件欄位</th>
                                         </tr>
                                     </thead>
                                     <!--用陣列形式讀取Database-->
@@ -373,11 +374,12 @@ include("Update.php")
                                         <td><?php echo $data['content']??''; ?></td>
                                         <td><?php if($data['end'] == 1) echo '結案'; else if($data['end'] == 0) echo '未結案'; else echo "error"; ?></td>
                                         <td><button onclick="update('<?php echo $data['name']; ?>')">處理連結</button></td>
+                                        <td><a href="mailto:'<?php echo $data['email']?>'">寄件給<?php echo $data['name']; ?></a></td>
                                         </tr>
                                         <?php
                                         ;}}else{ ?>
                                             <tr>
-                                             <td colspan="8">No data found</td>
+                                             <td colspan="9">No data found</td>
                                             </tr>
                                          <?php } ?>
                                     </tbody>
