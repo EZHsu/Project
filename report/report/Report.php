@@ -476,5 +476,3 @@ include("Update.php")
 </script>
 
 </body>
-
-</html>
