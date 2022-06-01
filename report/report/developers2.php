@@ -2,7 +2,7 @@
 include("database.php");
 $db= $conn;
 $tableName="report";
-$columns= ['report_id', 'report_people1','report_people2','report_reason','report_content', 'record_id', 'end'];
+$columns= ['report_id', 'report_write','report_name','report_reason','report_content', 'report_end'];
 $fetchData = fetch_data($db, $tableName, $columns);
 
 function fetch_data($db, $tableName, $columns){

@@ -14,7 +14,7 @@ if (isset($_POST['name'])) {
     $key = $_POST['name'];
 }
 
-$sql = "UPDATE costomer_service SET end= 1 WHERE name = '$key'";
+$sql = "UPDATE customer_service SET service_end= 1 WHERE 'service_name' = '$key'";
 
 if ($conn->query($sql) === TRUE) {
     echo "New record updated successfully";

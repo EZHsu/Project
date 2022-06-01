@@ -1,8 +1,8 @@
 <?php
 include("database.php");
 $db= $conn;
-$tableName="costomer_service";
-$columns= ['id', 'name','email','title','content', 'end'];
+$tableName="customer_service";
+$columns= ['service_id', 'service_name','service_email','service_title','service_content', 'service_end'];
 $fetchData = fetch_data($db, $tableName, $columns);
 
 function fetch_data($db, $tableName, $columns){
@@ -14,9 +14,8 @@ function fetch_data($db, $tableName, $columns){
    $msg= "Table Name is empty";
 }
 else{
-
 $columnName = implode(", ", $columns);
-$query = "SELECT ".$columnName." FROM $tableName"." ORDER BY id DESC";
+$query = "SELECT ".$columnName." FROM $tableName"." ORDER BY service_id DESC";
 $result = $db->query($query);
 
 if($result== true){ 

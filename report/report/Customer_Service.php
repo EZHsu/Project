@@ -367,14 +367,14 @@ include("Update.php")
                                     <tbody>
                                         
                                         <tr>
-                                        <td><?php echo $data['id']??''; ?></td>
-                                        <td><?php echo $data['name']??''; ?></td>
-                                        <td><?php echo $data['email']??''; ?></td>
-                                        <td><?php echo $data['title']??''; ?></td>
-                                        <td><?php echo $data['content']??''; ?></td>
-                                        <td><?php if($data['end'] == 1) echo '結案'; else if($data['end'] == 0) echo '未結案'; else echo "error"; ?></td>
-                                        <td><button onclick="update('<?php echo $data['name']; ?>')">處理連結</button></td>
-                                        <td><a href="mailto:'<?php echo $data['email']?>'">寄件給<?php echo $data['name']; ?></a></td>
+                                        <td><?php echo $data['service_id']??''; ?></td>
+                                        <td><?php echo $data['service_name']??''; ?></td>
+                                        <td><?php echo $data['service_email']??''; ?></td>
+                                        <td><?php echo $data['service_title']??''; ?></td>
+                                        <td><?php echo $data['service_content']??''; ?></td>
+                                        <td><?php if($data['service_end'] == 1) echo '結案'; else if($data['service_end'] == 0) echo '未結案'; else echo "error"; ?></td>
+                                        <td><button onclick="update('<?php echo $data['service_name']; ?>')">處理連結</button></td>
+                                        <td><a href="mailto:'<?php echo $data['service_email']?>'">寄件給<?php echo $data['service_name']; ?></a></td>
                                         </tr>
                                         <?php
                                         ;}}else{ ?>

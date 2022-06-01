@@ -346,12 +346,11 @@ include("Update2.php")
                                 <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>當事人1</th>
-                                            <th>當事人2</th>
+                                            <th>檢舉人</th>
+                                            <th>被檢舉人</th>
                                             <th>檢舉事由</th>
                                             <th>檢舉內容</th>
                                             <th>記錄ID</th>
-                                            <th>結案與否</th>
                                             <th>連結</th>
                                         </tr>
                                     </thead>
@@ -368,18 +367,17 @@ include("Update2.php")
                                         
                                         <tr>
                                         <td><?php echo $data['report_id']??''; ?></td>
-                                        <td><?php echo $data['report_people1']??''; ?></td>
-                                        <td><?php echo $data['report_people2']??''; ?></td>
+                                        <td><?php echo $data['report_write']??''; ?></td>
+                                        <td><?php echo $data['report_name']??''; ?></td>
                                         <td><?php echo $data['report_reason']??''; ?></td>
                                         <td><?php echo $data['report_content']??''; ?></td>
-                                        <td><?php echo $data['record_id']??''; ?></td>
-                                        <td><?php if($data['end'] == 1) echo '結案'; else if($data['end'] == 0) echo '未結案'; else echo "error"; ?></td>
+                                        <td><?php if($data['report_end'] == 1) echo '結案'; else if($data['report_end'] == 0) echo '未結案'; else echo "error"; ?></td>
                                         <td><button onclick="update('<?php echo $data['report_id']; ?>')">處理連結</button></td>
                                         </tr>
                                         <?php
                                         ;}}else{ ?>
                                             <tr>
-                                             <td colspan="9">No data found</td>
+                                             <td colspan="8">No data found</td>
                                             </tr>
                                          <?php } ?>
                                     </tbody>
@@ -456,9 +454,9 @@ include("Update2.php")
         //get the input value
         jQuery.ajax({
             //the url to send the data to
-            url: "Update.php",
+            url: "Update2.php",
             //the data to send to
-            data: {name: $report_id},
+            data: {name: $name},
             //type. for eg: GET, POST
             type: "POST",
             //on success
