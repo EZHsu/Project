@@ -64,7 +64,8 @@ CREATE TABLE `authority` (
   `name` varchar(100) NOT NULL,
   `level` char(20) NOT NULL,
   `service_ID` varchar(100) CHARACTER SET utf8mb4 DEFAULT NULL,
-  `point` int(100) NOT NULL
+  `point` int(100) NOT NULL,
+  `report_count` int(11) NOT NULL 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -243,6 +244,7 @@ CREATE TABLE `report` (
   `report_id` int(50) NOT NULL,
   `report_write` varchar(50) CHARACTER SET utf8mb4 NOT NULL,
   `report_name` varchar(50) CHARACTER SET utf8mb4 NOT NULL,
+  `reported_account` varchar(100) CHARACTER SET utf8mb4 NOT NULL,
   `report_reason` varchar(100) NOT NULL,
   `report_content` varchar(200) NOT NULL,
   `report_end` int(11) NOT NULL
@@ -252,22 +254,22 @@ CREATE TABLE `report` (
 -- 傾印資料表的資料 `report`
 --
 
-INSERT INTO `report` (`report_id`, `report_write`, `report_name`, `report_reason`, `report_content`) VALUES
-(1, '', '', '服務有夠爛', 'bad bad'),
-(2, '', '', 'haha', 'haaaa'),
-(3, '', '', 'jaaa', 'kaaa'),
-(4, '', '', '服務有夠爛', '態度不好'),
-(5, '', '', '我很生氣 ', '寄件速度太慢'),
-(17, '', '', '騷擾', '訊息騷擾\r\n'),
-(22, '', '', '寄件速度慢', 'very slow\r\n'),
-(23, '', '', '服務有夠爛', 'jijij'),
-(24, '', '', 'jiji', 'ijia'),
-(25, '', '', 'jojo', 'ojoj'),
-(27, '', '', '母湯', 'vet t t t '),
-(28, 'joanna', '', 'jijie ', 'awex'),
-(32, 'joanna', 'bear', 'not good', 'unlike this experience'),
-(33, 'joanna', 'bear', 'bad', 'dislike this experience'),
-(34, 'joanna', 'bear', 'very bad', 'badb bad');
+INSERT INTO `report` (`report_id`, `report_write`, `report_name`,`reported_account`, `report_reason`, `report_content`) VALUES
+(1, '', '','0905176218','服務有夠爛', 'bad bad'),
+(2, '', '','0922222222' ,'haha', 'haaaa'),
+(3, '', '','0922222222', 'jaaa', 'kaaa'),
+(4, '', '','0922222222', '服務有夠爛', '態度不好'),
+(5, '', '','0923423423', '我很生氣 ', '寄件速度太慢'),
+(17, '', '','0923423423', '騷擾', '訊息騷擾\r\n'),
+(22, '', '','0923423423', '寄件速度慢', 'very slow\r\n'),
+(23, '', '','09655432371', '服務有夠爛', 'jijij'),
+(24, '', '','0923423423', 'jiji', 'ijia'),
+(25, '', '','0963852741', 'jojo', 'ojoj'),
+(27, '', '','0923423423', '母湯', 'vet t t t '),
+(28, 'joanna','', '0963852741', 'jijie ', 'awex'),
+(32, 'joanna', 'bear','0963852741', 'not good', 'unlike this experience'),
+(33, 'joanna', 'bear','0905176218', 'bad', 'dislike this experience'),
+(34, 'joanna', 'bear','0918482618', 'very bad', 'badb bad');
 
 -- --------------------------------------------------------
 

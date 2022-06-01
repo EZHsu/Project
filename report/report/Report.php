@@ -1,6 +1,7 @@
 <?php
 include("developers2.php");
-include("Update2.php")
+include("Update2-Failed.php");
+include("Update2-Success.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -348,6 +349,7 @@ include("Update2.php")
                                             <th>ID</th>
                                             <th>檢舉人</th>
                                             <th>被檢舉人</th>
+                                            <th>被檢舉人帳號</th>
                                             <th>檢舉事由</th>
                                             <th>檢舉內容</th>
                                             <th>成立與否</th>
@@ -369,10 +371,11 @@ include("Update2.php")
                                         <td><?php echo $data['report_id']??''; ?></td>
                                         <td><?php echo $data['report_write']??''; ?></td>
                                         <td><?php echo $data['report_name']??''; ?></td>
+                                        <td><?php echo $data['reported_account']??''; ?></td>
                                         <td><?php echo $data['report_reason']??''; ?></td>
                                         <td><?php echo $data['report_content']??''; ?></td>
                                         <td><?php if($data['report_end'] == 1) echo '成立';else if($data['report_end'] == 2) echo '未成立'; else if($data['report_end'] == 0) echo '未結案'; else echo "error"; ?></td>
-                                        <td><button onclick="updateS('<?php echo $data['report_id']; ?>')">成立</button> <button onclick="updateF('<?php echo $data['report_id']; ?>')">不成立</button></td>
+                                        <td><button onclick="updateS('<?php echo $data['report_id']; ?>', '<?php echo $data['reported_account']; ?>')">成立</button> <button onclick="updateF('<?php echo $data['report_id']; ?>')">不成立</button></td>
                                         </tr>
                                         <?php
                                         ;}}else{ ?>
@@ -450,13 +453,13 @@ include("Update2.php")
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
     <script  type="text/javascript">
-    function updateS($name){
+    function updateS($name, $acc){
         //get the input value
         jQuery.ajax({
             //the url to send the data to
             url: "Update2-Success.php",
             //the data to send to
-            data: {name: $name},
+            data: {name: $name, acc: $acc},
             //type. for eg: GET, POST
             type: "POST",
             //on success
