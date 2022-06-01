@@ -471,10 +471,11 @@
 
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
+    <script src="js/demo/chart-pie-demo.php"></script>
     <script src="js/demo/chart-bar-demo.js"></script>
     <script src="jquery-csv-main/jquery-csv-main/src/jquery.csv.js"></script>
-    
 </body>
-
+<?php
+include("js/demo/chart-pie-demo.php");
+?>
 </html>

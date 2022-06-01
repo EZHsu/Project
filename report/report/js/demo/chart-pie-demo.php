@@ -2,8 +2,10 @@
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
 
+<script src="vendor/chart.js/Chart.min.js"></script>
 
 // Pie Chart Example
+<script>
 var ctx = document.getElementById("myPieChart");
 var myPieChart = new Chart(ctx, {
   type: 'doughnut',
@@ -34,3 +36,4 @@ var myPieChart = new Chart(ctx, {
     cutoutPercentage: 80,
   },
 });
+</script>
