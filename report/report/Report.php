@@ -13,7 +13,7 @@ include("Update2.php")
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>客服處理</title>
+    <title>檢舉處理</title>
 
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -112,7 +112,7 @@ include("Update2.php")
             <li class="nav-item ">
                 <a class="nav-link" href="Report.html">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>客服處理</span></a>
+                    <span>檢舉處理</span></a>
             </li>
 
             <!-- Divider -->
@@ -220,7 +220,7 @@ include("Update2.php")
                                     </div>
                                     <div>
                                         <div class="small text-gray-500">4月2日, 2022</div>
-                                        有XXXXX件客服待處理
+                                        有XXXXX件檢舉待處理
                                     </div>
                                 </a>
                                 <a class="dropdown-item text-center small text-gray-500" href="#">顯示全部</a>
@@ -338,7 +338,7 @@ include("Update2.php")
 
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h4 class="m-0 font-weight-bold text-primary">客服列表</h4>
+                            <h4 class="m-0 font-weight-bold text-primary">檢舉列表</h4>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
