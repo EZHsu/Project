@@ -373,7 +373,7 @@ include("Update.php")
                                         <td><?php echo $data['service_title']??''; ?></td>
                                         <td><?php echo $data['service_content']??''; ?></td>
                                         <td><?php if($data['service_end'] == 1) echo '結案'; else if($data['service_end'] == 0) echo '未結案'; else echo "error"; ?></td>
-                                        <td><button onclick="update('<?php echo $data['service_name']; ?>')">處理連結</button></td>
+                                        <td><button onclick="update('<?php echo $data['service_id']; ?>')">處理連結</button></td>
                                         <td><a href="mailto:'<?php echo $data['service_email']?>'">寄件給<?php echo $data['service_name']; ?></a></td>
                                         </tr>
                                         <?php
