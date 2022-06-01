@@ -27,14 +27,16 @@ SET time_zone = "+00:00";
 --
 -- 資料表結構 `authority`
 --
-
+drop DATABASE book;
+CREATE DATABASE book;
+use book;
 CREATE TABLE `authority` (
   `name` varchar(100) NOT NULL,
   `account` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `level` varchar(100) NOT NULL,
   `service_id` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- 傾印資料表的資料 `authority`
@@ -70,7 +72,7 @@ CREATE TABLE `bookdata` (
   `language` varchar(100) NOT NULL,
   `coverphoto` varchar(100) NOT NULL,
   `addtime` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -82,7 +84,7 @@ CREATE TABLE `comment` (
   `comment_id` varchar(50) NOT NULL,
   `comment_score` varchar(100) NOT NULL,
   `comment_content` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- 傾印資料表的資料 `comment`
@@ -100,11 +102,11 @@ INSERT INTO `comment` (`comment_id`, `comment_score`, `comment_content`) VALUES
 CREATE TABLE `costomer_service` (
   `id` varchar(20) NOT NULL,
   `name` varchar(20) NOT NULL,
-  `email` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `email` varchar(20) CHARACTER SET utf8mb4 NOT NULL,
   `title` varchar(50) NOT NULL,
   `content` varchar(80) NOT NULL,
   `end` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- 傾印資料表的資料 `costomer_service`
@@ -136,8 +138,9 @@ CREATE TABLE `report` (
   `report_people2` varchar(50) NOT NULL,
   `report_reason` varchar(100) NOT NULL,
   `report_content` varchar(200) NOT NULL,
-  `record_id` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `record_id` varchar(50) NOT NULL,
+  `end` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- 傾印資料表的資料 `report`

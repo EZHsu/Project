@@ -1,6 +1,6 @@
 <?php
-include("developers2.php");
-include("Update2.php")
+include("developers.php");
+include("Update.php")
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -346,13 +346,13 @@ include("Update2.php")
                                 <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>當事人1</th>
-                                            <th>當事人2</th>
-                                            <th>檢舉事由</th>
-                                            <th>檢舉內容</th>
-                                            <th>記錄ID</th>
+                                            <th>姓名</th>
+                                            <th>Email</th>
+                                            <th>標題</th>
+                                            <th>內容</th>
                                             <th>結案與否</th>
                                             <th>連結</th>
+                                            <th>寄件欄位</th>
                                         </tr>
                                     </thead>
                                     <!--用陣列形式讀取Database-->
@@ -367,14 +367,14 @@ include("Update2.php")
                                     <tbody>
                                         
                                         <tr>
-                                        <td><?php echo $data['report_id']??''; ?></td>
-                                        <td><?php echo $data['report_people1']??''; ?></td>
-                                        <td><?php echo $data['report_people2']??''; ?></td>
-                                        <td><?php echo $data['report_reason']??''; ?></td>
-                                        <td><?php echo $data['report_content']??''; ?></td>
-                                        <td><?php echo $data['record_id']??''; ?></td>
+                                        <td><?php echo $data['id']??''; ?></td>
+                                        <td><?php echo $data['name']??''; ?></td>
+                                        <td><?php echo $data['email']??''; ?></td>
+                                        <td><?php echo $data['title']??''; ?></td>
+                                        <td><?php echo $data['content']??''; ?></td>
                                         <td><?php if($data['end'] == 1) echo '結案'; else if($data['end'] == 0) echo '未結案'; else echo "error"; ?></td>
-                                        <td><button onclick="update('<?php echo $data['report_id']; ?>')">處理連結</button></td>
+                                        <td><button onclick="update('<?php echo $data['name']; ?>')">處理連結</button></td>
+                                        <td><a href="mailto:'<?php echo $data['email']?>'">寄件給<?php echo $data['name']; ?></a></td>
                                         </tr>
                                         <?php
                                         ;}}else{ ?>
@@ -458,7 +458,7 @@ include("Update2.php")
             //the url to send the data to
             url: "Update.php",
             //the data to send to
-            data: {name: $report_id},
+            data: {name: $name},
             //type. for eg: GET, POST
             type: "POST",
             //on success
