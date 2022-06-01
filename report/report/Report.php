@@ -350,7 +350,7 @@ include("Update2.php")
                                             <th>被檢舉人</th>
                                             <th>檢舉事由</th>
                                             <th>檢舉內容</th>
-                                            <th>記錄ID</th>
+                                            <th>成立與否</th>
                                             <th>連結</th>
                                         </tr>
                                     </thead>
@@ -371,8 +371,8 @@ include("Update2.php")
                                         <td><?php echo $data['report_name']??''; ?></td>
                                         <td><?php echo $data['report_reason']??''; ?></td>
                                         <td><?php echo $data['report_content']??''; ?></td>
-                                        <td><?php if($data['report_end'] == 1) echo '結案'; else if($data['report_end'] == 0) echo '未結案'; else echo "error"; ?></td>
-                                        <td><button onclick="update('<?php echo $data['report_id']; ?>')">處理連結</button></td>
+                                        <td><?php if($data['report_end'] == 1) echo '成立';else if($data['report_end'] == 2) echo '未成立'; else if($data['report_end'] == 0) echo '未結案'; else echo "error"; ?></td>
+                                        <td><button onclick="updateS('<?php echo $data['report_id']; ?>')">成立</button> <button onclick="updateF('<?php echo $data['report_id']; ?>')">不成立</button></td>
                                         </tr>
                                         <?php
                                         ;}}else{ ?>
@@ -450,11 +450,34 @@ include("Update2.php")
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
     <script  type="text/javascript">
-    function update($name){
+    function updateS($name){
         //get the input value
         jQuery.ajax({
             //the url to send the data to
-            url: "Update2.php",
+            url: "Update2-Success.php",
+            //the data to send to
+            data: {name: $name},
+            //type. for eg: GET, POST
+            type: "POST",
+            //on success
+            success: function(data){
+                console.log("***********Success***************"); //You can remove here
+                console.log(data); //You can remove here
+            },
+            //on error
+            error: function(){
+                    console.log("***********Error***************"); //You can remove here
+                    console.log(data); //You can remove here
+            }
+        });
+    }
+</script>
+<script  type="text/javascript">
+    function updateF($name){
+        //get the input value
+        jQuery.ajax({
+            //the url to send the data to
+            url: "Update2-Failed.php",
             //the data to send to
             data: {name: $name},
             //type. for eg: GET, POST
