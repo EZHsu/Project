@@ -356,7 +356,7 @@
                             <!-- Bar Chart -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">瀏覽人數</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">積分排行</h6>
                                 </div>
                                 <div class="card-body">
                                     <div class="chart-bar">
@@ -377,30 +377,13 @@
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">熱門類別</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">書庫類別</h6>
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
                                     <div class="chart-pie pt-4">
                                         <canvas id="myPieChart"></canvas>
-                                    </div>
-                                     <div class="mt-4 text-center small">
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-primary"></i> 文學小說
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-success"></i> 商業理財
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-info"></i> 人文史地
-                                        </span>
-                                         <span class="mr-2">
-                                            <i class="fas fa-circle text-people"></i> 心理勵志
-                                        </span>
-                                         <span class="mr-2">
-                                            <i class="fas fa-circle text-ad"></i> 其他
-                                        </span>
-                                    </div>                                   
+                                    </div>                         
 <!--
                                    
 -->
@@ -472,10 +455,10 @@
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.php"></script>
-    <script src="js/demo/chart-bar-demo.js"></script>
     <script src="jquery-csv-main/jquery-csv-main/src/jquery.csv.js"></script>
 </body>
 <?php
 include("js/demo/chart-pie-demo.php");
+include("js/demo/chart-bar-demo.php")
 ?>
 </html>
