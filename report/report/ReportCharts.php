@@ -339,7 +339,7 @@
                             <!-- Area Chart -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">總借閱量</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">每月借閱量 2022</h6>
                                 </div>
                                 <div class="card-body">
                                     <div class="chart-area">
@@ -453,12 +453,11 @@
     <script src="vendor/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.php"></script>
     <script src="jquery-csv-main/jquery-csv-main/src/jquery.csv.js"></script>
 </body>
 <?php
 include("js/demo/chart-pie-demo.php");
-include("js/demo/chart-bar-demo.php")
+include("js/demo/chart-bar-demo.php");
+include("js/demo/chart-area-demo.php");
 ?>
 </html>
