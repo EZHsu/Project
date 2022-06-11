@@ -80,7 +80,7 @@
             </div>
             <div class="container">
                 <ol>
-                    <li><a href="index.html">後臺管理</a></li>
+                    <li>後臺管理</li>
                     <li>添加書籍資料</li>
                 </ol>
             </div>
@@ -198,7 +198,7 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-btn">
-                                        <button class="submit-btn" type="button" onclick="javascript:location.href='index.html'">取消</button>
+                                        <button class="submit-btn" type="button" onclick="window.open('', '_self', ''); window.close();">取消</button>
                                     </div>
                                 </div>
                             </div>

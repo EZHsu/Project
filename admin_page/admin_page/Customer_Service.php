@@ -1,3 +1,7 @@
+<?php
+include("developers.php");
+include("Update.php")
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,24 +13,20 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-        <title>共享分析</title>
+    <title>客服處理</title>
 
-    <!-- Custom fonts for this template-->
+    <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
-    <!-- Custom styles for this template-->
+    <!-- Custom styles for this template -->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-    <style>
-        .text-people{
-            color: #8080c0!important;
-        }
-        .text-ad{
-            color: #ae57a4!important;
-        }
-    </style>
+
+    <!-- Custom styles for this page -->
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
 </head>
 
 <body id="page-top">
@@ -40,28 +40,41 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="charts.php">
                 <div class="sidebar-brand-icon rotate-n-15">
-                                            <i class="fas fa-fw fa-wrench"></i>       
+                      <i class="fas fa-fw fa-wrench"></i> 
                 </div>
-               <div class="sidebar-brand-text mx-3">網站後台管理</div>
+<div class="sidebar-brand-text mx-3">網站後台管理</div>
             </a>
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-
-         
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-
             <!-- Nav Item - Pages Collapse Menu -->
 <!--
-          
-
-   <!-- Nav Item - Charts -->
-   <li class="nav-item ">
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+                    aria-expanded="true" aria-controls="collapsePages">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Pages</span>
+                </a>
+                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+-->
+<!--
+                        <h6 class="collapse-header">Login Screens:</h6>
+                        <a class="collapse-item" href="login.html">Login</a>
+                        <a class="collapse-item" href="register.html">Register</a>
+                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
+                        <div class="collapse-divider"></div>
+                        <h6 class="collapse-header">Other Pages:</h6>
+                        <a class="collapse-item" href="404.html">404 Page</a>
+                        <a class="collapse-item" href="blank.html">Blank Page</a>
+                    </div>
+                </div>
+            </li>
+-->
+            <!-- Nav Item - Charts -->
+            <li class="nav-item ">
                 <a class="nav-link" href="charts.php">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>共享分析</span></a>
@@ -85,7 +98,7 @@
                     </div>
                 </div>
 
-                <li class="nav-item ">
+            <li class="nav-item ">
                 <a class="nav-link" href="report.php">
                     <i class="fas fa-fw fa-table"></i>
                     <span>檢舉處理</span></a>
@@ -171,7 +184,7 @@
                                 <i class="fas fa-bell fa-fw"></i>-->
                                 <!-- Counter - Alerts -->
                                 <!--<span class="badge badge-danger badge-counter">3+</span>
-                            </a> -->
+                            </a>-->
                             <!-- Dropdown - Alerts -->
                             <!--<div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="alertsDropdown">
@@ -208,7 +221,7 @@
                                     </div>
                                     <div>
                                         <div class="small text-gray-500">4月2日, 2022</div>
-                                        有XXXXX件檢舉待處理
+                                        有XXXXX件客服待處理
                                     </div>
                                 </a>
                                 <a class="dropdown-item text-center small text-gray-500" href="#">顯示全部</a>
@@ -288,7 +301,7 @@
                                     src="img/undraw_profile.svg">
                             </a>-->
                             <!-- Dropdown - User Information -->
-                           <!-- <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                            <!--<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">-->
 <!--
                                 <a class="dropdown-item" href="#">
@@ -310,9 +323,9 @@
                                     登出
                                 </a>
                             </div>
-                        </li>-->
+                        </li>
 
-                    </ul>
+                    </ul>-->
 
                 </nav>
                 <!-- End of Topbar -->
@@ -320,72 +333,59 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                    <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">營運報表</h1><br>
-<!--
-                    <p class="mb-4">Chart.js is a third party plugin that is used to generate the charts in this theme.
-                        The charts below have been customized - for further customization options, please visit the <a
-                            target="_blank" href="https://www.chartjs.org/docs/latest/">official Chart.js
-                            documentation</a>.</p>
--->
+                    
+                    <!-- DataTales Example -->
+                    
 
-                    <!-- Content Row -->
-                    <div class="row">
-
-                        <div class="col-xl-8 col-lg-7">
-
-                            <!-- Area Chart -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">每月借閱量 2022</h6>
-                                </div>
-                                <div class="card-body">
-                                    <div class="chart-area">
-                                        <canvas id="myAreaChart"></canvas>
-                                    </div>
-<!--
-                                    <hr>
-                                    Styling for the area chart can be found in the
-                                    <code>/js/demo/chart-area-demo.js</code> file.
--->
-                                </div>
-                            </div>
-
-                            <!-- Bar Chart -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">出借次數排行</h6>
-                                </div>
-                                <div class="card-body">
-                                    <div class="chart-bar">
-                                        <canvas id="myBarChart"></canvas>
-                                    </div>
-<!--
-                                    <hr>
-                                    Styling for the bar chart can be found in the
-                                    <code>/js/demo/chart-bar-demo.js</code> file.
--->
-                                </div>
-                            </div>
-
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h4 class="m-0 font-weight-bold text-primary">客服列表</h4>
                         </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>姓名</th>
+                                            <th>Email</th>
+                                            <th>標題</th>
+                                            <th>內容</th>
+                                            <th>結案與否</th>
+                                            <th>連結</th>
+                                            <th>寄件欄位</th>
+                                        </tr>
+                                    </thead>
+                                    <!--用陣列形式讀取Database-->
 
-                        <!-- Donut Chart -->
-                        <div class="col-xl-4 col-lg-5">
-                            <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">書庫類別</h6>
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="chart-pie pt-4">
-                                        <canvas id="myPieChart"></canvas>
-                                    </div>                         
-<!--
-                                   
--->
-                                </div>
+                                        
+                                        
+            
+
+                                    <tbody>
+                                    <?php
+                                    if(is_array($fetchData)){      
+                                        foreach($fetchData as $data){
+                                        ?>
+                                        
+                                        <tr>
+                                        <td><?php echo $data['service_id']??''; ?></td>
+                                        <td><?php echo $data['service_name']??''; ?></td>
+                                        <td><?php echo $data['service_email']??''; ?></td>
+                                        <td><?php echo $data['service_title']??''; ?></td>
+                                        <td><?php echo $data['service_content']??''; ?></td>
+                                        <td><?php if($data['service_end'] == 1) echo '結案'; else if($data['service_end'] == 0) echo '未結案'; else echo "error"; ?></td>
+                                        <td><button onclick="update('<?php echo $data['service_id']; ?>')">處理連結</button></td>
+                                        <td><a href="mailto:'<?php echo $data['service_email']?>'">寄件給<?php echo $data['service_name']; ?></a></td>
+                                        </tr>
+                                        <?php
+                                        ;}}else{ ?>
+                                            <tr>
+                                             <td colspan="9">No data found</td>
+                                            </tr>
+                                         <?php } ?>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -448,14 +448,33 @@
     <script src="js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
+    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="jquery-csv-main/jquery-csv-main/src/jquery.csv.js"></script>
+    <script src="js/demo/datatables-demo.js"></script>
+    <script  type="text/javascript">
+    function update($name){
+        //get the input value
+        jQuery.ajax({
+            //the url to send the data to
+            url: "Update.php",
+            //the data to send to
+            data: {name: $name},
+            //type. for eg: GET, POST
+            type: "POST",
+            //on success
+            success: function(data){
+                console.log("***********Success***************"); //You can remove here
+                console.log(data); //You can remove here
+            },
+            //on error
+            error: function(){
+                    console.log("***********Error***************"); //You can remove here
+                    console.log(data); //You can remove here
+            }
+        });
+    }
+</script>
+
 </body>
-<?php
-include("js/demo/chart-pie-demo.php");
-include("js/demo/chart-bar-demo.php");
-include("js/demo/chart-area-demo.php");
-?>
-</html>

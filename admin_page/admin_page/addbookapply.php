@@ -41,11 +41,11 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="charts.php">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">返回</div>
+        <div class="sidebar-brand-text mx-3">返回首頁</div>
     </a>
 
     <!-- Divider -->
@@ -71,7 +71,7 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="bookdatafrom.php" target="_blank">
+        <a class="nav-link" href="javascript:window.open('bookdatafrom.php','winname','directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=800,height=700');">
             <i class="fas fa-fw fa-table"></i>
             <span>添加書籍資料</span></a>
     </li>
@@ -100,211 +100,200 @@
     <!-- Main Content -->
     <div id="content">
 
-        <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-            <!-- Sidebar Toggle (Topbar) -->
-            <form class="form-inline">
-                <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                    <i class="fa fa-bars"></i>
-                </button>
-            </form>
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <form class="form-inline">
+                        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                            <i class="fa fa-bars"></i>
+                        </button><div>
+                        <h3>輔仁二手書平台後台系統</h3></div>
+                    </form>
 
-            <!-- Topbar Search -->
-            <form
-                class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                <div class="input-group">
-                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                        aria-label="Search" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                        <button class="btn btn-primary" type="button">
-                            <i class="fas fa-search fa-sm"></i>
-                        </button>
-                    </div>
-                </div>
-            </form>
+                    <!-- Topbar Search -->
 
-            <!-- Topbar Navbar -->
-            <ul class="navbar-nav ml-auto">
+                    
 
-                <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                <li class="nav-item dropdown no-arrow d-sm-none">
-                    <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-search fa-fw"></i>
-                    </a>
-                    <!-- Dropdown - Messages -->
-                    <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                        aria-labelledby="searchDropdown">
-                        <form class="form-inline mr-auto w-100 navbar-search">
-                            <div class="input-group">
-                                <input type="text" class="form-control bg-light border-0 small"
-                                    placeholder="Search for..." aria-label="Search"
-                                    aria-describedby="basic-addon2">
-                                <div class="input-group-append">
-                                    <button class="btn btn-primary" type="button">
-                                        <i class="fas fa-search fa-sm"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </li>
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
 
-                <!-- Nav Item - Alerts -->
-                <li class="nav-item dropdown no-arrow mx-1">
-                    <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-bell fa-fw"></i>
-                        <!-- Counter - Alerts -->
-                        <span class="badge badge-danger badge-counter">3+</span>
-                    </a>
-                    <!-- Dropdown - Alerts -->
-                    <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                        aria-labelledby="alertsDropdown">
-                        <h6 class="dropdown-header">
-                            Alerts Center
-                        </h6>
-                        <a class="dropdown-item d-flex align-items-center" href="#">
-                            <div class="mr-3">
-                                <div class="icon-circle bg-primary">
-                                    <i class="fas fa-file-alt text-white"></i>
-                                </div>
+                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                        <li class="nav-item dropdown no-arrow d-sm-none">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-search fa-fw"></i>
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                                aria-labelledby="searchDropdown">
+                                <form class="form-inline mr-auto w-100 navbar-search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control bg-light border-0 small"
+                                            placeholder="Search for..." aria-label="Search"
+                                            aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button">
+                                                <i class="fas fa-search fa-sm"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
-                            <div>
-                                <div class="small text-gray-500">December 12, 2019</div>
-                                <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                            </div>
-                        </a>
-                        <a class="dropdown-item d-flex align-items-center" href="#">
-                            <div class="mr-3">
-                                <div class="icon-circle bg-success">
-                                    <i class="fas fa-donate text-white"></i>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="small text-gray-500">December 7, 2019</div>
-                                $290.29 has been deposited into your account!
-                            </div>
-                        </a>
-                        <a class="dropdown-item d-flex align-items-center" href="#">
-                            <div class="mr-3">
-                                <div class="icon-circle bg-warning">
-                                    <i class="fas fa-exclamation-triangle text-white"></i>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="small text-gray-500">December 2, 2019</div>
-                                Spending Alert: We've noticed unusually high spending for your account.
-                            </div>
-                        </a>
-                        <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-                    </div>
-                </li>
+                        </li>
 
-                <!-- Nav Item - Messages -->
-                <li class="nav-item dropdown no-arrow mx-1">
-                    <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-envelope fa-fw"></i>
-                        <!-- Counter - Messages -->
-                        <span class="badge badge-danger badge-counter">7</span>
-                    </a>
-                    <!-- Dropdown - Messages -->
-                    <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                        aria-labelledby="messagesDropdown">
-                        <h6 class="dropdown-header">
-                            Message Center
-                        </h6>
-                        <a class="dropdown-item d-flex align-items-center" href="#">
-                            <div class="dropdown-list-image mr-3">
-                                <img class="rounded-circle" src="img/undraw_profile_1.svg"
-                                    alt="...">
-                                <div class="status-indicator bg-success"></div>
+                        <!-- Nav Item - Alerts -->
+                        <!--<li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-bell fa-fw"></i>-->
+                                <!-- Counter - Alerts -->
+                                <!--<span class="badge badge-danger badge-counter">3+</span>
+                            </a>-->
+                            <!-- Dropdown - Alerts -->
+                            <!--<div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="alertsDropdown">
+                                <h6 class="dropdown-header">
+                                    通知中心
+                                </h6>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-primary">
+                                            <i class="fas fa-file-alt text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="small text-gray-500"> 4月12日, 2022</div>
+                                        <span class="font-weight-bold">已經產生新的月報表可供下載</span>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-success">
+                                            <i class="fas fa-donate text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="small text-gray-500">4月7日, 2022</div>
+                                        本月借閱量為XXXXXX冊
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-warning">
+                                            <i class="fas fa-exclamation-triangle text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="small text-gray-500">4月2日, 2022</div>
+                                        有XXXXX件客服待處理
+                                    </div>
+                                </a>
+                                <a class="dropdown-item text-center small text-gray-500" href="#">顯示全部</a>
                             </div>
-                            <div class="font-weight-bold">
-                                <div class="text-truncate">Hi there! I am wondering if you can help me with a
-                                    problem I've been having.</div>
-                                <div class="small text-gray-500">Emily Fowler · 58m</div>
-                            </div>
-                        </a>
-                        <a class="dropdown-item d-flex align-items-center" href="#">
-                            <div class="dropdown-list-image mr-3">
-                                <img class="rounded-circle" src="img/undraw_profile_2.svg"
-                                    alt="...">
-                                <div class="status-indicator"></div>
-                            </div>
-                            <div>
-                                <div class="text-truncate">I have the photos that you ordered last month, how
-                                    would you like them sent to you?</div>
-                                <div class="small text-gray-500">Jae Chun · 1d</div>
-                            </div>
-                        </a>
-                        <a class="dropdown-item d-flex align-items-center" href="#">
-                            <div class="dropdown-list-image mr-3">
-                                <img class="rounded-circle" src="img/undraw_profile_3.svg"
-                                    alt="...">
-                                <div class="status-indicator bg-warning"></div>
-                            </div>
-                            <div>
-                                <div class="text-truncate">Last month's report looks great, I am very happy with
-                                    the progress so far, keep up the good work!</div>
-                                <div class="small text-gray-500">Morgan Alvarez · 2d</div>
-                            </div>
-                        </a>
-                        <a class="dropdown-item d-flex align-items-center" href="#">
-                            <div class="dropdown-list-image mr-3">
-                                <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
-                                    alt="...">
-                                <div class="status-indicator bg-success"></div>
-                            </div>
-                            <div>
-                                <div class="text-truncate">Am I a good boy? The reason I ask is because someone
-                                    told me that people say this to all dogs, even if they aren't good...</div>
-                                <div class="small text-gray-500">Chicken the Dog · 2w</div>
-                            </div>
-                        </a>
-                        <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-                    </div>
-                </li>
+                        </li>-->
 
-                <div class="topbar-divider d-none d-sm-block"></div>
+                        <!-- Nav Item - Messages -->
+                        <!--<li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-envelope fa-fw"></i>-->
+                                <!-- Counter - Messages -->
+                                <!--<span class="badge badge-danger badge-counter">7</span>-->
+                            <!--</a>-->
+                            <!-- Dropdown - Messages -->
+                            <!--<div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="messagesDropdown">
+                                <h6 class="dropdown-header">
+                                    訊息中心
+                                </h6>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-circle" src="img/undraw_profile_1.svg"
+                                            alt="...">
+                                        <div class="status-indicator bg-success"></div>
+                                    </div>
+                                    <div class="font-weight-bold">
+                                        <div class="text-truncate">您好,我遭遇了XXXXX需要管理員您的協助</div>
+                                        <div class="small text-gray-500">顧客1 · 58m</div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-circle" src="img/undraw_profile_2.svg"
+                                            alt="...">
+                                        <div class="status-indicator"></div>
+                                    </div>
+                                    <div>
+                                        <div class="text-truncate">我們是XXXX希望能跟你們商談</div>
+                                        <div class="small text-gray-500">商家1 · 3hr</div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-circle" src="img/undraw_profile_3.svg"
+                                            alt="...">
+                                        <div class="status-indicator bg-warning"></div>
+                                    </div>
+                                    <div>
+                                        <div class="text-truncate">檢查出的問題是OOOO 已經修正</div>
+                                        <div class="small text-gray-500">工程師1 · 2d</div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-circle" src="img/undraw_profile_3.svg"
+                                            alt="...">
+                                        <div class="status-indicator bg-success"></div>
+                                    </div>
+                                    <div>
+                                        <div class="text-truncate">&(&(*@#&$()*#$*#)($*#)(</div>
+                                        <div class="small text-gray-500">不知道哪裡來的智障 · 2w</div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item text-center small text-gray-500" href="#">查看更多...</a>
+                            </div>
+                        </li>
 
-                <!-- Nav Item - User Information -->
-                <li class="nav-item dropdown no-arrow">
-                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                        <img class="img-profile rounded-circle"
-                            src="img/undraw_profile.svg">
-                    </a>
-                    <!-- Dropdown - User Information -->
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                        aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="#">
-                            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                            Profile
-                        </a>
-                        <a class="dropdown-item" href="#">
-                            <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                            Settings
-                        </a>
-                        <a class="dropdown-item" href="#">
-                            <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                            Activity Log
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                            Logout
-                        </a>
-                    </div>
-                </li>
+                        <div class="topbar-divider d-none d-sm-block"></div>-->
 
-            </ul>
+                        <!-- Nav Item - User Information -->
+                        <!--<li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"> Username</span>
+                                <img class="img-profile rounded-circle"
+                                    src="img/undraw_profile.svg">
+                            </a>-->
+                            <!-- Dropdown - User Information -->
+                            <!--<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">-->
+<!--
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Profile
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Settings
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Activity Log
+                                </a>
+                                <div class="dropdown-divider"></div>
+-->
+                                <!--<a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    登出
+                                </a>
+                            </div>
+                        </li>
 
-        </nav>
-        <!-- End of Topbar -->
+                    </ul>-->
+
+                </nav>
+                <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
@@ -323,7 +312,7 @@
                         <!-- 彈跳出來的表單 (notice) -->
                         <div id="id01" class="modal">
                             <div class="modal-content animate"> 
-                            <form enctype="multipart/form-data" id="form" name="theForm" action="update.php" method="post">
+                            <form enctype="multipart/form-data" id="form" name="theForm" action="updateBook.php" method="post">
                                 書名&emsp;&emsp;：<input id="form_title" name="form_title" type="text" placeholder="請輸入書名"><br>
                                 作者&emsp;&emsp;：<input id="form_author" name="form_author" type="text" placeholder="請輸入作者(英文名請輸入英文)"><br>
                                 譯者&emsp;&emsp;：<input id="form_translator" name="form_translator" type="text" placeholder="請輸入譯者"><br>
@@ -398,14 +387,14 @@
                                         <?php 
                                         $host = "localhost";
                                         $dbuser = "root";
-                                        $dbpassword = "";
-                                        $dbname = "book_share";
+                                        $dbpassword = "12345678";
+                                        $dbname = "book";
                                         $link = mysqli_connect($host, $dbuser, $dbpassword, $dbname);
                                         if($link){
                                             $allData = "SELECT * from book_data";
                                             $result = mysqli_query($link, $allData);
                                             while($row=mysqli_fetch_assoc($result)){
-                                                $id = $row['bk_id'];
+                                                $id = $row['bk_ID'];
                                                 $titleid = "title".$id;
                                                 $authorid = "author".$id;
                                                 $sortid = "sort".$id;
@@ -417,12 +406,6 @@
                                                 $tranid = "trans".$id;
                                                 $introid = "intro".$id;
 
-                                                //如果使用者沒選擇語言，就預設選繁體中文
-                                                if($row['bk_lang'] == "")
-                                                {
-                                                    $row['bk_lang'] = "繁體中文";
-                                                }
-
                                                 if($row['apply_status'] == 1)
                                                 {
                                                     continue;
@@ -432,7 +415,6 @@
                                                 }
 
                                                 //隱藏三個div，存從DB抓下來的資料
-                                                echo "<div style='display:none' id={$langid}>".$row['bk_lang']."</div>";
                                                 echo "<div style='display:none' id={$tranid}>".$row['bk_trans']."</div>";
                                                 echo "<div style='display:none' id={$introid}>".$row['bk_intro']."</div>";
 
@@ -442,7 +424,7 @@
                                                 echo "<td id={$sortid}>".$row['bk_type']."</td>";
                                                 echo "<td id={$dateid}>".$row['bk_publicdate']."</td>";
                                                 echo "<td id={$publishid}>".$row['bk_public']."</td>";
-                                                echo "<td id={$isbnid}>".$row['bk_isbn']."</td>";
+                                                echo "<td id={$isbnid}>".$row['bk_ISBN']."</td>";
                                                 echo "<td>".$row['apply_date']."</td>";
                                                 echo "<td>".$row['apply_applicant']."</td>";
                                                 echo "<td><button class='btn' onclick='show({$id})'>".$row['apply_status']."</button></td>";
