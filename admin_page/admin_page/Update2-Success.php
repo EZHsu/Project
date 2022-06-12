@@ -24,13 +24,18 @@ $sql = "UPDATE report SET report_end = 1 WHERE report_id = '$key'";
 $sql2 = "UPDATE authority SET report_count = report_count + 1 WHERE account = '$acc'";
 
 if ($conn->query($sql) === TRUE) {
+    
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
+echo "已成立該檢舉案件";
+
 if ($conn->query($sql2) === TRUE) {
+
 } else {
     echo "Error: " . $sql2 . "<br>" . $conn->error;
 }
+echo "並已更新檢舉次數";
 $conn->close();
 ?>

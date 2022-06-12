@@ -18,10 +18,11 @@ if (isset($_POST['name'])) {
 $sql = "UPDATE customer_service SET service_end= 1 WHERE service_id = '$key'";
 
 if ($conn->query($sql) === TRUE) {
-    //echo "New record updated successfully";
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
+$message = "已成功更新客服紀錄";
+echo $message;
 
 $conn->close();
 ?>

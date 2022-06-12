@@ -23,7 +23,7 @@ if($result== true){
   $row= mysqli_fetch_all($result, MYSQLI_ASSOC);
   $msg = array_fill(0, 12, 0);
   $i = 0;
-  while($row[$i]["date_format(trade_date, '%M %Y')"] != NULL){
+  while(isset($row[$i]["date_format(trade_date, '%M %Y')"])){
     if($row[$i]["date_format(trade_date, '%M %Y')"] == "January 2022"){
       $msg[0] = $row[$i]["COUNT(*)"];
     }

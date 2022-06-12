@@ -19,9 +19,11 @@ if (isset($_POST['name'])) {
 $sql = "UPDATE report SET report_end = 2 WHERE report_id = '$key'";
 
 if ($conn->query($sql) === TRUE) {
+    
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
+echo "已否決該檢舉案件";
 $conn->close();
 ?>

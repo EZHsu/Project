@@ -1,6 +1,5 @@
 <?php
 include("developers.php");
-include("Update.php")
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -466,12 +465,14 @@ include("Update.php")
             //on success
             success: function(data){
                 console.log("***********Success***************"); //You can remove here
-                console.log(data); //You can remove here
+                if(data == "已成功更新客服紀錄"){
+                    alert(data);
+                    window.location.reload();
+                }
             },
             //on error
             error: function(){
                     console.log("***********Error***************"); //You can remove here
-                    console.log(data); //You can remove here
             }
         });
     }

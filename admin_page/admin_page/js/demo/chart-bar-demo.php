@@ -29,7 +29,7 @@ if($result== true){
     $msg = array_fill(0, 10, 0);
     //echo print_r($row);
     $i = 0;
-    while($row[$i]['count(*)'] != NULL){
+    while(isset($row[$i]['count(*)'])){
       $msg[$i] = $row[$i]['count(*)'];
       $i++;
     }
@@ -62,7 +62,7 @@ function fetch_data3($db, $tableName, $columns){
     $row= mysqli_fetch_all($result, MYSQLI_ASSOC);
     $msg = array_fill(0, 10, "NULL");
     $i = 0;
-    while($row[$i]['trade_borrow'] != NULL){
+    while(isset($row[$i]['trade_borrow'])){
       $msg[$i] = $row[$i]['trade_borrow'];
       $i++;
     }

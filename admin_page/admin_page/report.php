@@ -1,7 +1,5 @@
 <?php
-include("developers2.php");
-include("Update2-Failed.php");
-include("Update2-Success.php");
+include("developers2.php"); 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -468,7 +466,10 @@ include("Update2-Success.php");
             //on success
             success: function(data){
                 console.log("***********Success***************"); //You can remove here
-                console.log(data); //You can remove here
+                if(data == "已成立該檢舉案件並已更新檢舉次數"){
+                    alert(data);
+                    window.location.reload();
+                }
             },
             //on error
             error: function(){
@@ -491,7 +492,10 @@ include("Update2-Success.php");
             //on success
             success: function(data){
                 console.log("***********Success***************"); //You can remove here
-                console.log(data); //You can remove here
+                if(data == "已否決該檢舉案件"){
+                    alert(data);
+                    window.location.reload();
+                }
             },
             //on error
             error: function(){

@@ -28,7 +28,7 @@ if($result== true){
     $row= mysqli_fetch_all($result, MYSQLI_ASSOC);
     $CountByBookCat = array_fill(0, 15, 0);
     $rowcount = 0;
-    while($row[$rowcount]["count(*)"] != NULL){
+    while(isset($row[$rowcount]["count(*)"])){
         $rowcount ++;
     }
     for($i = 0; $i < $rowcount; $i++){
