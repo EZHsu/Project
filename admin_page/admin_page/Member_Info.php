@@ -12,7 +12,7 @@ include("developers3.php");
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>檢舉處理</title>
+    <title>會員資料</title>
 
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">

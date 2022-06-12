@@ -466,10 +466,8 @@ include("developers2.php");
             //on success
             success: function(data){
                 console.log("***********Success***************"); //You can remove here
-                if(data == "已成立該檢舉案件並已更新檢舉次數"){
-                    alert(data);
-                    window.location.reload();
-                }
+                if(data != 0)alert(data);
+                window.location.reload();
             },
             //on error
             error: function(){
