@@ -10,8 +10,6 @@ if($_POST['act']=='add'){ //如果是按下新增的按鈕
     $date = $_POST['form_date'];
     $isbn = $_POST['form_isbn'];
     $intro = $_POST['form_intro'];
-    $lang = $_POST['lang'];
-
     //類型是取得使用者選擇的id，再轉回相對應的類型名稱
     $sortid = $_POST['form_sort'];
     $array_sort = array("商業與經濟", "科學與科普", "電腦科學", "醫學", "語言", "社會科學", "人文史地", "藝術與設計", "生活與旅遊", "大專院校教科書", "考試用書", "文學小說", "漫畫", "圖文書", "兒童圖書");
@@ -20,7 +18,7 @@ if($_POST['act']=='add'){ //如果是按下新增的按鈕
     //更新各項資料
     $host = "localhost";
     $dbuser = "root";
-    $dbpassword = "";
+    $dbpassword = "12345678";
     $dbname = "book_share";
     $link = mysqli_connect($host, $dbuser, $dbpassword, $dbname);
     if($link){
@@ -67,7 +65,7 @@ if($_POST['act']=='add'){ //如果是按下新增的按鈕
     $id = $_POST['form_id'];
     $host = "localhost";
     $dbuser = "root";
-    $dbpassword = "";
+    $dbpassword = "12345678";
     $dbname = "book_share";
     $link = mysqli_connect($host, $dbuser, $dbpassword, $dbname);
     if($link){

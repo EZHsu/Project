@@ -3,8 +3,8 @@
 
     $host = "localhost";
     $dbuser = "root";
-    $dbpassword = "";
-    $dbname = "book_share";
+    $dbpassword = "12345678";
+    $dbname = "book";
     $link = mysqli_connect($host, $dbuser, $dbpassword, $dbname);
     
 
@@ -16,18 +16,20 @@
         $book_date = $_POST["book_date"];
         $book_ISBN = $_POST["book_ISBN"];
         $book_type = $_POST["book_type"];
-        $book_lang = $_POST["book_lang"];
  
-        $image = $_FILES['book_img']['tmp_name'];
-        $book_img = addslashes(file_get_contents($image));
+        $image = $_FILES['book_img']['name'];
+        $book_img = addslashes(file_get_contents($_FILES['book_img']['tmp_name']));
+        //echo  print_r($_FILES['book_img']);
+        $apply_date = date('Y-m-d');
+
 
         $book_intro = $_POST["book_intro"];
         $apply_status = $_POST["apply_status"];
         $apply_applicant = $_POST["apply_applicant"];
 
-        $sql_query= "INSERT INTO book_data (name, bk_author, bk_trans, bk_public, bk_publicdate, bk_isbn, bk_type , bk_lang , bk_img_blob, bk_intro, apply_status, apply_applicant) VALUES ('$name', '$book_author', '$book_trans', '$book_public', '$book_date', '$book_ISBN', '$book_type', '$book_lang' ,'$book_img', '$book_intro','$apply_status','$apply_applicant')";
+        $sql_query= "INSERT INTO book_data (name, bk_author, bk_trans, bk_public, bk_publicdate, bk_isbn, bk_type, bk_img, bk_intro, apply_status, apply_applicant, apply_date, bk_img_blob) VALUES ('$name', '$book_author', '$book_trans', '$book_public', '$book_date', '$book_ISBN', '$book_type' ,'$image', '$book_intro','$apply_status','$apply_applicant','$apply_date', '$book_img')";
         if($link->query($sql_query) === TRUE){
-            echo "<script> alert('成功新增！將返回管理頁面');location.replace('index.html');</script>";
+            echo "<script> alert('成功新增！將關閉頁面');window.close();</script>";
         }
         else{
             echo $link->error;

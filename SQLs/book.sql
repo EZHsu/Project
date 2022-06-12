@@ -101,7 +101,8 @@ CREATE TABLE `book_data` (
   `bk_adddate` date DEFAULT NULL,
   `apply_date` date NOT NULL,
   `apply_status` varchar(500) NOT NULL,
-  `apply_applicant` varchar(500) CHARACTER SET utf8mb4 NOT NULL
+  `apply_applicant` varchar(500) CHARACTER SET utf8mb4 NOT NULL,
+  `bk_img_blob` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --

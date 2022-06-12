@@ -451,7 +451,6 @@
     <script src="vendor/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="jquery-csv-main/jquery-csv-main/src/jquery.csv.js"></script>
 </body>
 <?php
 include("js/demo/chart-pie-demo.php");

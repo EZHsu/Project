@@ -303,6 +303,7 @@
                                             <th>出版日期</th>
                                             <th>出版社</th>
                                             <th>ISBN</th>
+                                            <th>推薦按鈕</th>
                                         </tr>
                                     </thead>
                             
@@ -325,8 +326,16 @@
                                                 echo "<td>".$row['bk_publicdate']."</td>";
                                                 echo "<td>".$row['bk_public']."</td>";
                                                 echo "<td>".$row['bk_ISBN']."</td>";
+                                                echo '<td><button onclick="recommend(';
+                                                echo "'".$row["bk_ISBN"]."',";
+                                                echo "'".$row["name"]."',";
+                                                echo "'".$row["bk_img"]."')";
+                                                echo '">推薦書籍</button></td>';
                                                 //echo "<td>".$row['bk_adddate']."</td>"; 取消新增時間功能
                                                 echo "</tr>";
+                                                /*echo "<script>
+                                                console.log(".json_encode($row).")
+                                                </script>";*/
                                             }
                                         }
                                         else{
@@ -404,6 +413,34 @@
 
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
+    <script  type="text/javascript">
+    function recommend($ISBN, $name, $bk_img){
+        //get the input value
+        jQuery.ajax({
+            //the url to send the data to
+            url: "Recommend.php",
+            //the data to send to
+            data: {ISBN: $ISBN, name: $name, img: $bk_img},
+            //type. for eg: GET, POST
+            type: "POST",
+            //on success
+            success: function(data){
+                console.log("***********Success***************"); //You can remove here
+                if(data == "這本書已經被推薦"){
+                    alert(data);
+                }
+                else{
+                    alert("已更新推薦書籍");
+                }
+            },
+            //on error
+            error: function(){
+                    console.log("***********Error***************"); //You can remove here
+                    console.log(data); //You can remove here
+            }
+        });
+    }
+</script>
 
 </body>
 
