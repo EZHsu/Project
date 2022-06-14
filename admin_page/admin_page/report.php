@@ -1,5 +1,6 @@
 <?php
-include("developers2.php"); 
+include("developers2.php");
+include("AdminCheck.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,6 +26,7 @@ include("developers2.php");
 
     <!-- Custom styles for this page -->
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
 
@@ -293,37 +295,37 @@ include("developers2.php");
                         <div class="topbar-divider d-none d-sm-block"></div>-->
 
                         <!-- Nav Item - User Information -->
-                        <!--<li class="nav-item dropdown no-arrow">
+                        <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"> Username</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"> <?php echo $_SESSION['name']?></span>
                                 <img class="img-profile rounded-circle"
                                     src="img/undraw_profile.svg">
-                            </a>-->
+                            </a>
                             <!-- Dropdown - User Information -->
-                           <!-- <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">-->
-<!--
-                                <a class="dropdown-item" href="#">
+                           <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+
+                                <!--<a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
-                                </a>
-                                <a class="dropdown-item" href="#">
+                                </a>-->
+                                <!--<a class="dropdown-item" href="#">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Settings
-                                </a>
-                                <a class="dropdown-item" href="#">
+                                </a>-->
+                                <!--<a class="dropdown-item" href="#">
                                     <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Activity Log
-                                </a>
-                                <div class="dropdown-divider"></div>
--->
-                                <!--<a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                </a>-->
+                                <!--<div class="dropdown-divider"></div>-->
+
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     登出
                                 </a>
                             </div>
-                        </li>-->
+                        </li>
 
                     </ul>
 
@@ -353,7 +355,7 @@ include("developers2.php");
                                             <th>檢舉事由</th>
                                             <th>檢舉內容</th>
                                             <th>成立與否</th>
-                                            <th>連結</th>
+                                            <th>處理按鈕</th>
                                         </tr>
                                     </thead>
                                     <!--用陣列形式讀取Database-->
@@ -376,7 +378,7 @@ include("developers2.php");
                                         <td><?php echo $data['report_reason']??''; ?></td>
                                         <td><?php echo $data['report_content']??''; ?></td>
                                         <td><?php if($data['report_end'] == 1) echo '成立';else if($data['report_end'] == 2) echo '未成立'; else if($data['report_end'] == 0) echo '未結案'; else echo "error"; ?></td>
-                                        <td><button onclick="updateS('<?php echo $data['report_id']; ?>', '<?php echo $data['reported_account']; ?>')">成立</button> <button onclick="updateF('<?php echo $data['report_id']; ?>')">不成立</button></td>
+                                        <td><a href = "#" onclick="ConfirmReport1('<?php echo $data['report_id']; ?>', '<?php echo $data['reported_account']; ?>')"class="btn btn-info btn-circle"><i class="fas fa-check"></i></a> <a href = "#" onclick="ConfirmReport2('<?php echo $data['report_id']; ?>')"class="btn btn-info btn-circle"><i class="fas fa-trash"></i></i></a>
                                         </tr>
                                         <?php
                                         ;}}else{ ?>
@@ -431,7 +433,7 @@ include("developers2.php");
                 <div class="modal-body">如要登出，請按確定.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">取消</button>
-                    <a class="btn btn-primary" href="index.html">確定</a>
+                    <a class="btn btn-primary" href="Login.php" onclick="Logout()">確定</a>
                 </div>
             </div>
         </div>
@@ -499,6 +501,58 @@ include("developers2.php");
             error: function(){
                     console.log("***********Error***************"); //You can remove here
                     console.log(data); //You can remove here
+            }
+        });
+    }
+</script>
+<script>
+function ConfirmReport1($name, $acc)
+{
+    event.preventDefault();
+    Swal.fire({
+        icon: 'question',
+        title: '成立檢舉',
+        text: '確定成立此案件?',
+        allowOutsideClick: true,
+        showCancelButton: true,
+    }).then((result) => {  
+        if (result.isConfirmed) {    
+            updateS($name, $acc);
+        }
+    })
+}
+</script>
+<script>
+function ConfirmReport2($name)
+{
+    event.preventDefault();
+    Swal.fire({
+        icon: 'question',
+        title: '駁回',
+        text: '確定駁回此案件?',
+        allowOutsideClick: true,
+        showCancelButton: true,
+    }).then((result) => {  
+        if (result.isConfirmed) {    
+            updateF($name);
+        }
+    })
+}
+</script>
+<script type="text/javascript">
+    function Logout(){
+                //get the input value
+            jQuery.ajax({
+            //the url to send the data to
+            url: "Logout.php",
+            success: function(){
+                console.log("***********Success***************"); //You can remove here
+                    alert("已成功登出");
+                    window.location.href = "Login.php";
+            },
+            //on error
+            error: function(){
+                    console.log("***********Error***************"); //You can remove here
             }
         });
     }

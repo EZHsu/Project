@@ -1,3 +1,6 @@
+<?php
+include("AdminCheck.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -280,37 +283,37 @@
                         <div class="topbar-divider d-none d-sm-block"></div>-->
 
                         <!-- Nav Item - User Information -->
-                        <!--<li class="nav-item dropdown no-arrow">
+                        <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"> Username</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"> <?php echo $_SESSION['name']?></span>
                                 <img class="img-profile rounded-circle"
                                     src="img/undraw_profile.svg">
-                            </a>-->
+                            </a>
                             <!-- Dropdown - User Information -->
-                           <!-- <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">-->
-<!--
-                                <a class="dropdown-item" href="#">
+                           <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+
+                                <!--<a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
-                                </a>
-                                <a class="dropdown-item" href="#">
+                                </a>-->
+                                <!--<a class="dropdown-item" href="#">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Settings
-                                </a>
-                                <a class="dropdown-item" href="#">
+                                </a>-->
+                                <!--<a class="dropdown-item" href="#">
                                     <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Activity Log
-                                </a>
-                                <div class="dropdown-divider"></div>
--->
-                                <!--<a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                </a>-->
+                                <!--<div class="dropdown-divider"></div>-->
+
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     登出
                                 </a>
                             </div>
-                        </li>-->
+                        </li>
 
                     </ul>
 
@@ -354,7 +357,7 @@
                             <!-- Bar Chart -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">出借次數排行</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">過去一個月書籍出借次數排行</h6>
                                 </div>
                                 <div class="card-body">
                                     <div class="chart-bar">
@@ -364,6 +367,22 @@
                                     <hr>
                                     Styling for the bar chart can be found in the
                                     <code>/js/demo/chart-bar-demo.js</code> file.
+-->
+                                </div>
+                            </div>
+                            <!-- Bar Chart 2-->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">過去一個月書籍類別出借次數排行</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-bar">
+                                        <canvas id="myBarChart2"></canvas>
+                                    </div>
+<!--
+                                    <hr>
+                                    Styling for the bar chart can be found in the
+                                    <code>/js/demo/chart-bar-demo 2.js</code> file.
 -->
                                 </div>
                             </div>
@@ -431,7 +450,7 @@
                 <div class="modal-body">如要登出，請按確定.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">取消</button>
-                    <a class="btn btn-primary" href="index.html">確定</a>
+                    <a class="btn btn-primary" href="Login.php" onclick="Logout()">確定</a>
                 </div>
             </div>
         </div>
@@ -456,5 +475,24 @@
 include("js/demo/chart-pie-demo.php");
 include("js/demo/chart-bar-demo.php");
 include("js/demo/chart-area-demo.php");
+include("js/demo/chart-bar-demo 2.php");
 ?>
+<script type="text/javascript">
+    function Logout(){
+                //get the input value
+            jQuery.ajax({
+            //the url to send the data to
+            url: "Logout.php",
+            success: function(){
+                console.log("***********Success***************"); //You can remove here
+                    alert("已成功登出");
+                    window.location.href = "Login.php";
+            },
+            //on error
+            error: function(){
+                    console.log("***********Error***************"); //You can remove here
+            }
+        });
+    }
+</script>
 </html>

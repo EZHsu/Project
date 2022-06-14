@@ -1,3 +1,6 @@
+<?php
+include("AdminCheck.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -265,32 +268,40 @@
                                 <img class="img-profile rounded-circle"
                                     src="img/undraw_profile.svg">
                             </a>-->
+                            <!-- Nav Item - User Information -->
+                            <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"> <?php echo $_SESSION['name']?></span>
+                                <img class="img-profile rounded-circle"
+                                    src="img/undraw_profile.svg">
+                            </a>
                             <!-- Dropdown - User Information -->
-                            <!--<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">-->
-<!--
-                                <a class="dropdown-item" href="#">
+                           <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+
+                                <!--<a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
-                                </a>
-                                <a class="dropdown-item" href="#">
+                                </a>-->
+                                <!--<a class="dropdown-item" href="#">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Settings
-                                </a>
-                                <a class="dropdown-item" href="#">
+                                </a>-->
+                                <!--<a class="dropdown-item" href="#">
                                     <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Activity Log
-                                </a>
-                                <div class="dropdown-divider"></div>
--->
-                                <!--<a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                </a>-->
+                                <!--<div class="dropdown-divider"></div>-->
+
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     登出
                                 </a>
                             </div>
                         </li>
 
-                    </ul>-->
+                    </ul>
 
                 </nav>
                 <!-- End of Topbar -->
@@ -470,21 +481,21 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">確定登出?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">如要登出，請按確定.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">取消</button>
+                    <a class="btn btn-primary" href="Login.php" onclick="Logout()">確定</a>
                 </div>
             </div>
         </div>
@@ -633,7 +644,7 @@ function sweet_refuse()
     event.preventDefault();
     Swal.fire({
         icon: 'warning',
-        title: 'Oops...',
+        title: '審核',
         text: '確定要駁回申請嗎',
         allowOutsideClick: true,
         showCancelButton: true,
@@ -651,8 +662,8 @@ function sweet_add()
     event.preventDefault();
     Swal.fire({
         icon: 'warning',
-        title: 'Oops...',
-        text: '確定要審核通過嗎',
+        title: '審核',
+        text: '確定要通過申請嗎',
         allowOutsideClick: true,
         showCancelButton: true,
     }).then((result) => {  
@@ -663,6 +674,24 @@ function sweet_add()
     })
 }
 
+</script>
+<script type="text/javascript">
+    function Logout(){
+                //get the input value
+            jQuery.ajax({
+            //the url to send the data to
+            url: "Logout.php",
+            success: function(){
+                console.log("***********Success***************"); //You can remove here
+                    alert("已成功登出");
+                    window.location.href = "Login.php";
+            },
+            //on error
+            error: function(){
+                    console.log("***********Error***************"); //You can remove here
+            }
+        });
+    }
 </script>
 
     

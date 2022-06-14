@@ -30,6 +30,7 @@ if($result== true){
   $msg= mysqli_error($db);
 }
 }
+//echo print_r($msg);
 return $msg;
 }
 ?>

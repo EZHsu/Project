@@ -19,28 +19,11 @@ if($_POST['act']=='add'){ //如果是按下新增的按鈕
     $host = "localhost";
     $dbuser = "root";
     $dbpassword = "12345678";
-    $dbname = "book_share";
+    $dbname = "book";
     $link = mysqli_connect($host, $dbuser, $dbpassword, $dbname);
     if($link){
-        $sql = "UPDATE book_data SET name = '$title' WHERE bk_id = '$id' ";
-        mysqli_query($link, $sql);
-        $sql = "UPDATE book_data SET bk_author = '$author' WHERE bk_id = '$id' ";
-        mysqli_query($link, $sql);
-        $sql = "UPDATE book_data SET bk_trans = '$translator' WHERE bk_id = '$id' ";
-        mysqli_query($link, $sql);
-        $sql = "UPDATE book_data SET bk_public = '$publish' WHERE bk_id = '$id' ";
-        mysqli_query($link, $sql);
-        $sql = "UPDATE book_data SET bk_publicdate = '$date' WHERE bk_id = '$id' ";
-        mysqli_query($link, $sql);
-        $sql = "UPDATE book_data SET bk_isbn = '$isbn'  WHERE bk_id = '$id' ";
-        mysqli_query($link, $sql);
-        $sql = "UPDATE book_data SET apply_status = '1'  WHERE bk_id = '$id' ";
-        mysqli_query($link, $sql);
-        $sql = "UPDATE book_data SET bk_intro = '$intro'  WHERE bk_id = '$id' ";
-        mysqli_query($link, $sql);
-        $sql = "UPDATE book_data SET bk_type = '$sort'  WHERE bk_id = '$id' ";
-        mysqli_query($link, $sql);
-        $sql = "UPDATE book_data SET bk_lang = '$lang'  WHERE bk_id = '$id' ";
+        $adddate = date('Y-m-d');
+        $sql = "UPDATE book_data SET name = '$title', bk_author = '$author',bk_trans = '$translator',bk_public = '$publish',bk_publicdate = '$date',bk_ISBN = '$isbn',apply_status = '1',bk_intro = '$intro',bk_type = '$sort', bk_adddate = '$adddate' WHERE bk_id = $id ";
         mysqli_query($link, $sql);
 
 
@@ -48,9 +31,10 @@ if($_POST['act']=='add'){ //如果是按下新增的按鈕
         if($_FILES["image"]["tmp_name"] != "") //如果有選擇新的圖片
         {
             $image = $_FILES['image']['tmp_name'];
+            $img = $_FILES['image']['name'];
             $imgContent = addslashes(file_get_contents($image));
 
-            $sql = "UPDATE book_data SET bk_img_blob = '$imgContent' WHERE bk_id = '$id' ";
+            $sql = "UPDATE book_data SET bk_img_blob = '$imgContent', bk_img = '$img' WHERE bk_id = '$id' ";
             mysqli_query($link, $sql);
         }
 

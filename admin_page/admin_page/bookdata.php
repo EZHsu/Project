@@ -1,3 +1,6 @@
+<?php
+include("AdminCheck.php");
+?>
 <!DOCTYPE html>
 <!-- 目前現有書籍列表 -->
 
@@ -22,6 +25,7 @@
 
     <!-- Custom styles for this page -->
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
 
@@ -250,32 +254,40 @@
             <img class="img-profile rounded-circle"
                 src="img/undraw_profile.svg">
         </a>-->
-        <!-- Dropdown - User Information -->
-        <!--<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-            aria-labelledby="userDropdown">-->
-<!--
-            <a class="dropdown-item" href="#">
-                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                Profile
-            </a>
-            <a class="dropdown-item" href="#">
-                <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                Settings
-            </a>
-            <a class="dropdown-item" href="#">
-                <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                Activity Log
-            </a>
-            <div class="dropdown-divider"></div>
--->
-            <!--<a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                登出
-            </a>
-        </div>
-    </li>
+                            <!-- Nav Item - User Information -->
+                            <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"> <?php echo $_SESSION['name']?></span>
+                                <img class="img-profile rounded-circle"
+                                    src="img/undraw_profile.svg">
+                            </a>
+                            <!-- Dropdown - User Information -->
+                           <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
 
-</ul>-->
+                                <!--<a class="dropdown-item" href="#">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Profile
+                                </a>-->
+                                <!--<a class="dropdown-item" href="#">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Settings
+                                </a>-->
+                                <!--<a class="dropdown-item" href="#">
+                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Activity Log
+                                </a>-->
+                                <!--<div class="dropdown-divider"></div>-->
+
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    登出
+                                </a>
+                            </div>
+                        </li>
+
+                    </ul>
 
 </nav>
 <!-- End of Topbar -->
@@ -326,11 +338,11 @@
                                                 echo "<td>".$row['bk_publicdate']."</td>";
                                                 echo "<td>".$row['bk_public']."</td>";
                                                 echo "<td>".$row['bk_ISBN']."</td>";
-                                                echo '<td><button onclick="recommend(';
+                                                echo '<td><a href="#" onclick = "Confirm(';
                                                 echo "'".$row["bk_ISBN"]."',";
                                                 echo "'".$row["name"]."',";
                                                 echo "'".$row["bk_img"]."')";
-                                                echo '">推薦書籍</button></td>';
+                                                echo '"class="btn btn-info btn-circle"> <i class="fas fa-check"></i></a></td>';
                                                 //echo "<td>".$row['bk_adddate']."</td>"; 取消新增時間功能
                                                 echo "</tr>";
                                                 /*echo "<script>
@@ -383,20 +395,19 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">確定登出?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">如要登出，請按確定.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">取消</button>
+                    <a class="btn btn-primary" href="Login.php" onclick="Logout()">確定</a>
                 </div>
             </div>
         </div>
     </div>
-
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -440,8 +451,41 @@
             }
         });
     }
-</script>
+function Confirm($ISBN, $name, $bk_img)
+{
+    event.preventDefault();
+    Swal.fire({
+        icon: 'warning',
+        title: '推薦',
+        text: '確定要推薦嗎 將會替換掉最舊的那本推薦書籍',
+        allowOutsideClick: true,
+        showCancelButton: true,
+    }).then((result) => {  
+        if (result.isConfirmed) {    
+            recommend($ISBN, $name, $bk_img);
+        }
+    })
+}
 
+</script>
+<script type="text/javascript">
+    function Logout(){
+                //get the input value
+            jQuery.ajax({
+            //the url to send the data to
+            url: "Logout.php",
+            success: function(){
+                console.log("***********Success***************"); //You can remove here
+                    alert("已成功登出");
+                    window.location.href = "Login.php";
+            },
+            //on error
+            error: function(){
+                    console.log("***********Error***************"); //You can remove here
+            }
+        });
+    }
+</script>
 </body>
 
 </html>

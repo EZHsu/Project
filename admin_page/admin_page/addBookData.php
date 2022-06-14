@@ -1,6 +1,7 @@
 <!--新增書籍資料表單之資料庫寫入 --> 
 <?php
 
+    include("AdminCheck.php");
     $host = "localhost";
     $dbuser = "root";
     $dbpassword = "12345678";

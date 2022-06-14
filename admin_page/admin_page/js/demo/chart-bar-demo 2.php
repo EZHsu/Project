@@ -8,10 +8,11 @@ include("database.php");
 $db= $conn;
 $tableName="trade";
 $columns= ['trade_id', 'trade_bookname','trade_date','trade_lend','trade_borrow', 'trade_level','comment_times','trade_returndate'];
-$fetchData2 = fetch_data2($db, $tableName, $columns);
-$fetchData3 = fetch_data3($db, $tableName, $columns);
+$fetchData5 = fetch_data5($db, $tableName, $columns);
+$fetchData6 = fetch_data6($db, $tableName, $columns);
+$fetchData7 = fetch_data7($db, "book_data", ['name', 'bk_type']);
 
-function fetch_data2($db, $tableName, $columns){
+function fetch_data5($db, $tableName, $columns){
  if(empty($db)){
   $msg= "Database connection error";
  }elseif (empty($columns) || !is_array($columns)) {
@@ -45,7 +46,7 @@ if($result== true){
 }
 return $msg;
 }
-function fetch_data3($db, $tableName, $columns){
+function fetch_data6($db, $tableName, $columns){
   if(empty($db)){
    $msg= "Database connection error";
   }elseif (empty($columns) || !is_array($columns)) {
@@ -66,7 +67,7 @@ function fetch_data3($db, $tableName, $columns){
       $msg[$i] = $row[$i]['trade_bookname'];
       $i++;
     }
-    //  echo print_r($msg);
+    //echo print_r($msg);
     //echo "||";
     //echo print_r($row);
   } else {
@@ -78,6 +79,100 @@ function fetch_data3($db, $tableName, $columns){
  }
  return $msg;
  }
+ function fetch_data7($db, $tableName, $columns){
+  if(empty($db)){
+   $msg= "Database connection error";
+  }elseif (empty($columns) || !is_array($columns)) {
+   $msg="columns Name must be defined in an indexed array";
+  }elseif(empty($tableName)){
+    $msg= "Table Name is empty";
+ }
+ else{
+$columnName = implode(", ", $columns);
+ $query = "SELECT ".$columnName." FROM $tableName";
+ $result = $db->query($query);
+ 
+ if($result== true){ 
+  if ($result->num_rows > 0) {
+    $row= mysqli_fetch_all($result, MYSQLI_ASSOC);
+    $msg = array_fill(0, 10, "NULL");
+    $msg = $row;
+    //echo print_r($msg);
+    //echo "||";
+    //echo print_r($row);
+  } else {
+     $msg= "No Data Found"; 
+  }
+ }else{
+   $msg= mysqli_error($db);
+ }
+ }
+ return $msg;
+ }
+
+ $i = 0;
+
+ //echo $fetchData7[0]['name'];
+ $newData = array(
+    array('count' => 0,'bk_type' => NULL)
+ );
+ while(isset($fetchData6[$i])){
+  $j = 0;
+  while(isset($fetchData7[$j])){
+    if($fetchData6[$i] == $fetchData7[$j]['name']){
+      $fetchData7[$j]['borrowCount']=$fetchData5[$i];
+    }
+    $j++;
+  }
+  $i++;
+ }
+//echo print_r($fetchData7);
+//echo "||";
+$i = 0;
+while(isset($fetchData7[$i])){
+  $j = 0;
+  if(isset($fetchData7[$i]['borrowCount'])){
+    while(isset($newData[$j])){
+      if($fetchData7[$i]['bk_type'] == $newData[$j]['bk_type']){
+        $newData[$j]['count'] += $fetchData7[$i]['borrowCount'];
+        break;
+      }
+      if(isset($newData[$j+1]) == FALSE ){
+        $newData[$j+1]['bk_type'] = $fetchData7[$i]['bk_type'];
+        $newData[$j+1]['count'] = 0;
+        $newData[$j+1]['count'] += $fetchData7[$i]['borrowCount'];
+        break;
+      }
+      $j++;
+    }
+  }
+  $i++;
+}
+function sortByOrder($a, $b) {
+  if($a['count'] == $b['count']) return 0;
+  else if($a['count'] > $b['count']) return -1;
+  else return 1;
+}
+usort($newData, 'sortByOrder');
+//echo print_r($newData);
+$i = 0;
+$Data = array_fill(0, 10, 0);
+$Labels = array_fill(0, 10, NULL);
+$count = 0;
+while(isset($newData[$i])){
+  $Data[$i] = $newData[$i]['count'];
+  $Labels[$i] = $newData[$i]['bk_type'];
+  $count += $Data[$i];
+  $i ++;
+}
+//echo print_r($newData);
+$Data[$i-1] = NULL;
+$Labels[$i-1] = NULL;
+if($Labels[0] == NULL){
+  $Labels = "No Data Found";
+} 
+//echo print_r($Data);
+//echo print_r($Labels);
 ?>
 <script>
 function number_format(number, decimals, dec_point, thousands_sep) {
@@ -106,13 +201,14 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 }
 
 // Bar Chart Example
-console.log(<?php echo json_encode($fetchData2); ?>);
-console.log(<?php echo json_encode($fetchData3); ?>);
-const RankPoints = <?php echo json_encode($fetchData2); ?>;
-const RankNames = <?php echo json_encode($fetchData3); ?>;
-var rankers = RankNames;
-var score = RankPoints
-const data2 = {
+console.log(<?php echo json_encode($Data); ?>);
+console.log(<?php echo json_encode($Labels); ?>);
+const RankPoints2 = <?php echo json_encode($Data); ?>;
+const RankNames2 = <?php echo json_encode($Labels); ?>;
+const sum = <?php echo $count ?>;
+var rankers = RankNames2;
+var score = RankPoints2;
+const data4 = {
     labels: rankers,
     datasets: [{
       label: "出借次數:",
@@ -123,9 +219,9 @@ const data2 = {
     }],
 }
 //config block
-const config2 = {
+const config4 = {
   type: 'bar',
-  data: data2,
+  data: data4,
   options: {
     maintainAspectRatio: false,
     layout: {
@@ -182,15 +278,15 @@ const config2 = {
       callbacks: {
         label: function(tooltipItem, chart) {
           var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-          return datasetLabel + number_format(tooltipItem.yLabel) + "次";
+          return datasetLabel + number_format(tooltipItem.yLabel) + "次"+ "\n"+ number_format(tooltipItem.yLabel)/sum * 100 + "%";
         }
       }
     },
   }
 }
 //render block
-const myBarChart = new Chart(
-  document.getElementById('myBarChart'),
-  config2
+const myBarChart2 = new Chart(
+  document.getElementById('myBarChart2'),
+  config4
 );
 </script>

@@ -1,3 +1,6 @@
+<?php
+include("AdminClose.php");
+?>
 <!DOCTYPE html>
 <!-- 管理員手動新增書籍資料表單 --> 
 
